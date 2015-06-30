@@ -2,6 +2,16 @@
 
 <p><%= link_to "Return to lessons", lessons_path %></p>
 
+<% unless  @lesson.id == Lesson.first.id %>
+<!-- Hide 'Previous' link once we reach to first record -->
+  <%= link_to 'Previous', Lesson.get_previous_lesson(@lesson) %>
+<% end %>
+<% unless @lesson.id == Lesson.last.id %>
+<!-- Hide 'Next' link once we reach to last record -->
+  <%= link_to 'Next', Lesson.get_next_lesson(@lesson) %>
+<% end %>
+
+
 <h3>Lesson Content:</h3>
 <p><%= @lesson.content %></p>
 

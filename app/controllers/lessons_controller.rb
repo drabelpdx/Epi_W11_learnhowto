@@ -9,6 +9,11 @@ class LessonsController < ApplicationController
     render :show
   end
 
+  def next
+    @lesson = Lesson.find(params[(:id+1)])
+    render :show
+  end
+
   def new
     @lesson = Lesson.new
     render :new

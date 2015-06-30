@@ -7,4 +7,8 @@
                                    :method => "delete"} %></p>
 
 <h3>Lessons:</h3>
-<p><%= @section.lessons %></p>
+<p><%= link_to "Create New Lesson", new_section_lesson_path(@section) %></p>
+
+<% @section.lessons.each do |lesson| %>
+  <li><%= link_to lesson.name, section_lesson_path(@section, lesson) %></li>
+<%end%>

@@ -1,6 +1,5 @@
 class Lesson < ActiveRecord::Base
   belongs_to :section
-  has_many :lessons
   validates :name, :presence => true
 
   # def self.get_previous_lesson(current_lesson)

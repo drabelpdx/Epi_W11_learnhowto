@@ -1,11 +1,12 @@
 <%= render "layouts/errors", :object => @lesson %>
 
-<%= form_for @lesson do |f| %>
+<%= form_for [@section, @lesson] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.label :number %>
   <%= f.text_field :number %>
+  <%= f.collection_select :section_id, Section.order(:name),:id,:name, :selected => @section.id %>
   <%= f.submit %>
 <% end %>

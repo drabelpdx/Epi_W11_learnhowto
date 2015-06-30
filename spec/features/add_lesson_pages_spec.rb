@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "the add a lesson process" do
+describe "the add lesson process" do
   it "adds a new lesson" do
     visit lessons_path
     click_on 'Create New Lesson'
-    fill_in 'Name', :with => 'Home stuff'
+    fill_in 'Name', :with => 'Test Lesson'
     click_on 'Create Lesson'
-    expect(page).to have_content 'Lessons'
+    expect(page).to have_content 'Test Lesson'
   end
 
   it "gives error when no name is entered" do
@@ -14,5 +14,4 @@ describe "the add a lesson process" do
     click_on 'Create Lesson'
     expect(page).to have_content 'errors'
   end
-
 end

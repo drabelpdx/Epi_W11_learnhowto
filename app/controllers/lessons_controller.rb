@@ -1,22 +1,16 @@
 class LessonsController < ApplicationController
   def index
     @lessons = Lesson.all
-    render :index
   end
 
   def show
     @lesson = Lesson.find(params[:id])
-    render :show
-  end
-
-  def next
-    @lesson = Lesson.find(params[(:id+1)])
-    render :show
+    @previous = Lesson.where("number < ?", @lesson.number).last
+    @next = Lesson.where("number > ?", @lesson.number).first
   end
 
   def new
     @lesson = Lesson.new
-    render :new
   end
 
   def create
@@ -30,7 +24,6 @@ class LessonsController < ApplicationController
 
   def edit
     @lesson = Lesson.find(params[:id])
-    render :edit
   end
 
   def update
@@ -50,6 +43,6 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit(:name, :content)
+    params.require(:lesson).permit(:name, :content, :number)
   end
 end
